@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="heading">
+      <h1 style="text-align: center">E-Commerce</h1>
+      <div  style="position: relative; left: 500px;display: flex; justify-content: center; align-items: center; column-gap: 10px; ">
+        <a href="/cart">
+            <svg 
+            xmlns="http://www.w3.org/2000/svg"
+            id="Outline"
+            
+           
+            viewBox="0 0 24 24"
+            width="40"
+            height="40"
+          >
+            <path
+              d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z"
+            />
+            <circle cx="7" cy="22" r="2" />
+            <circle cx="17" cy="22" r="2" />
+          </svg>
+        </a>
+       
+      <span id="asterisk" style="display: none; position: relative; left: -10px; top:-20px; color: red;font-weight: 900; margin: 0;padding: 0; ">0</span>
+        <div class="dropdown">
+          <img src="./user_3917711.png" style="width: 50px; height: 50px;" />
+          <div class="dropdown-content">
+            <p
+              style="
+                text-align: center;
+                border-bottom: 2px solid black;
+                padding: 10px;
+              "
+            >
+              Lakshay
+            </p>
+            <p
+              style="text-align: center; margin-top: 10px; margin-bottom: 10px"
+            >
+              Logout
+            </p>
+          </div>
+          <?xml version="1.0" encoding="UTF-8"?>
+      
+        </div>
+
+        
+      </div>
+    </div>
+    <h4  style="margin: 10px;font-size: larger;">Products</h4>
+    <div class="product-container" style="margin: 10px">
+      <div class="product-card">
+        <a>
+        <img
+          id="product-image"
+          style="border-radius: 2%"
+          src="./download (2).jpg"
+        />
+    </a>
+        <h4>Lakshay</h4>
+        <h5 style="margin: 10px">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+          nisi fugiat tenetur sequi quia aliquid, debitis voluptatum laudantium?
+          Voluptas, quae quos?!
+        </h5>
+
+        <div class="cart">
+          <button
+            class="plus"
+            style="width: 20px; height: 20px; text-align: center"
+            onclick="add()"
+          >
+            +
+          </button>
+          <h5 id="quantity" >0</h5>
+          <button onclick="subtract()" style="width: 20px; height: 20px; text-align: center">
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./customer.js" ></script>
+  </body>
+</html>

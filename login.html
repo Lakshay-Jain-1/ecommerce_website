@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        form {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Login Page</h1>
+    <form method="post" action="/login">
+        <div> 
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" >
+        </div>
+        <div> 
+            <label for="id_select">User Type</label>
+            <select id="id_select" name="user_type" autofocus>
+                <option value="1">Customer</option>
+                <option value="2">Vendor</option>
+                <option value="3">Admin</option>
+            </select>
+        </div>
+        <div> 
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" >
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
