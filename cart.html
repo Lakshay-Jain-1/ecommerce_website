@@ -22,13 +22,49 @@
     </style>
 </head>
 <body >
+    <button type="button" style="background-color: white; border: none; position:relative; left:-100px;"  >Clear YOUR Cart </button>
+
     <div style="border: 4px solid black; border-radius: 3px; width: 40vw; height: 80vh;box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; z-index: 1    ; ">
         <h1>Cart</h1>
-
+         <div id="container" style="position: relative;margin-top: 10px;"></div>
          
-        <h5 style="position: relative; bottom: -500px; left:400px">Total</h5>
-        <h5> </h5>
+         
+        <h2 style="position: relative; bottom: -420px; left:400px">Total</h2>
+        <h4 id="total" style="position: relative; bottom: -395px; left:550px" > </h4>
     </div>
-    
+    <script>
+          
+           document.querySelector("button").addEventListener("click",(event)=>{
+                console.log(1);
+                localStorage.clear()
+                location.reload()
+           })
+         
+            let sum=0;
+            for(let i = 0 ; i<localStorage.length;i++){
+                update(localStorage.key(i), localStorage.getItem(localStorage.key(i)))
+            }
+          
+            function update(x,y){
+                console.log(x)
+                let product_box = document.createElement("div")
+                product_box.style.display="flex"
+                product_box.style.gap="10px"
+                let productname = document.createElement("h3")
+                productname.textContent=x;
+                console.log(productname,x)
+                let product_price=document.createElement("h5")
+                product_price.innerText=y;
+                product_price.style.position="absolute"
+                product_price.style.right="5px"
+                product_box.appendChild(productname)
+                product_box.appendChild(product_price)
+                document.getElementById("container").appendChild(product_box)
+                sum=Number(sum)+Number(y);
+               document.getElementById("total").innerText=sum;
+                
+            }
+            
+    </script>
 </body>
 </html>

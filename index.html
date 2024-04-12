@@ -54,38 +54,17 @@
         
       </div>
     </div>
-    <h4  style="margin: 10px;font-size: larger;">Products</h4>
-    <div class="product-container" style="margin: 10px">
-      <div class="product-card">
-        <a>
-        <img
-          id="product-image"
-          style="border-radius: 2%"
-          src="./download (2).jpg"
-        />
-    </a>
-        <h4>Lakshay</h4>
-        <h5 style="margin: 10px">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-          nisi fugiat tenetur sequi quia aliquid, debitis voluptatum laudantium?
-          Voluptas, quae quos?!
-        </h5>
+    <h4  style="margin: 10px;font-size: 1.3rem; text-align: center; ">Products</h4>
+    <div id="megaproduct-container" >
+     </div>
+    <button class="open-button" style="text-align: center; " onclick="openForm()">Chat</button>
 
-        <div class="cart">
-          <button
-            class="plus"
-            style="width: 20px; height: 20px; text-align: center"
-            onclick="add()"
-          >
-            +
-          </button>
-          <h5 id="quantity" >0</h5>
-          <button onclick="subtract()" style="width: 20px; height: 20px; text-align: center">
-            -
-          </button>
-        </div>
-      </div>
-    </div>
+    <div id="myForm" style="display: none ;height: 400px;width: 280px; background-color: aliceblue; position: relative; left: 79vw;top: -300px;">
+      <div style="display: flex; "> <h3> Chat </h3> <button style="position: relative; left: 210px;background-color: white; border: none;" type="button" onclick="closeForm()">X</button></div> 
+     <input style="position:relative; bottom:-350px" type="text">
+     <button style="position:relative; bottom:-350px; width: 50px!important;" type="button">send</button>
+
+  
     <script src="./customer.js" ></script>
   </body>
 </html>

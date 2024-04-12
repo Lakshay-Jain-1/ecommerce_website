@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <div>
+       <form id="tform" style="display: none;" method="post" enctype="multipart/form-data" action="/test"> 
+          <label>Name Your Product</label>
+          <input id="p_name" name="name" type="text">
+          <label>Image of your Product</label>
+          <input id="file" name="file" type="file">
+          <label>Description</label>
+          <input id="des" name="des" type="text">
+          <input type="submit"> submit </input>
+
+
+       </form>
+
+       <div id="add"> <h2>Add Your Products</h2></div>
+       <div id="update"> <h2>Update (One Click to Update) </h2></div>
+       <div id="delete"><h2>Delete (Double Click to Delete)</h2></div>
+
+    </div>
+   <script>
+    document.getElementById("add").addEventListener("click",()=>{
+        document.querySelector("form").style.display="flex"
+        document.getElementById("add").style.display="none"
+        document.getElementById("update").style.display="none"
+        document.getElementById("delete").style.display="none"
+    })
+
+    // document.getElementById("tform").addEventListener("submit",async(event)=>{
+    //     event.preventDefault(); 
+    //     let new_form = new FormData();
+    //       let image = document.getElementById("file").files[0];
+    //       let name = document.getElementById("p_name").value;
+    //       let des = document.getElementById("des").value;
+
+    //       new_form.append("image", image);
+    //       new_form.append("name", name);
+    //       new_form.append("des", des);
+    //       console.log(new_form)
+    //    const options={
+    //     method:"POST",
+    //     body:new_form
+    //    }
+
+    //  await fetch("http://localhost:3000/test",options);
+
+       
+    //     document.getElementById("add").style.display="block"
+    //     document.getElementById("update").style.display="block"
+    //     document.getElementById("delete").style.display="block"
+
+    // })
+   </script>
+
+    
+</body>
+</html>
