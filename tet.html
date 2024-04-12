@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="./uploads/03acdad88c1df872a8c81b5f7fbb8427">
+  
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket =io();
+        socket.on("message",(message)=>{console.log(message)})
+    </script>
 </body>
 </html>

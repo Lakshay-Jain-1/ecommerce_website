@@ -9,13 +9,20 @@
   <body>
     <div id="heading">
       <h1 style="text-align: center">E-Commerce</h1>
-      <div  style="position: relative; left: 500px;display: flex; justify-content: center; align-items: center; column-gap: 10px; ">
+      <div
+        style="
+          position: relative;
+          left: 500px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          column-gap: 10px;
+        "
+      >
         <a href="/cart">
-            <svg 
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Outline"
-            
-           
             viewBox="0 0 24 24"
             width="40"
             height="40"
@@ -27,10 +34,23 @@
             <circle cx="17" cy="22" r="2" />
           </svg>
         </a>
-       
-      <span id="asterisk" style="display: none; position: relative; left: -10px; top:-20px; color: red;font-weight: 900; margin: 0;padding: 0; ">0</span>
+
+        <span
+          id="asterisk"
+          style="
+            display: none;
+            position: relative;
+            left: -10px;
+            top: -20px;
+            color: red;
+            font-weight: 900;
+            margin: 0;
+            padding: 0;
+          "
+          >0</span
+        >
         <div class="dropdown">
-          <img src="./user_3917711.png" style="width: 50px; height: 50px;" />
+          <img src="./user_3917711.png" style="width: 50px; height: 50px" />
           <div class="dropdown-content">
             <p
               style="
@@ -48,23 +68,61 @@
             </p>
           </div>
           <?xml version="1.0" encoding="UTF-8"?>
-      
         </div>
-
-        
       </div>
     </div>
-    <h4  style="margin: 10px;font-size: 1.3rem; text-align: center; ">Products</h4>
-    <div id="megaproduct-container" >
-     </div>
-    <button class="open-button" style="text-align: center; " onclick="openForm()">Chat</button>
+    <h4 style="margin: 10px; font-size: 1.3rem; text-align: center">
+      Products
+    </h4>
+    <div id="megaproduct-container"></div>
+    <button class="open-button" style="text-align: center" onclick="openForm()">
+      Chat
+    </button>
 
-    <div id="myForm" style="display: none ;height: 400px;width: 280px; background-color: aliceblue; position: relative; left: 79vw;top: -300px;">
-      <div style="display: flex; "> <h3> Chat </h3> <button style="position: relative; left: 210px;background-color: white; border: none;" type="button" onclick="closeForm()">X</button></div> 
-     <input style="position:relative; bottom:-350px" type="text">
-     <button style="position:relative; bottom:-350px; width: 50px!important;" type="button">send</button>
+    <div
+      id="myForm"
+      style="
+        display: none;
+        height: 400px;
+        width: 280px;
+        background-color: aliceblue;
+        position: relative;
+        left: 79vw;
+        top: -300px;
+      "
+    >
+      <div  style="display: flex">
+        <h3>Chat</h3>
+        <button
+          style="
+            position: relative;
+            left: 210px;
+            background-color: white;
+            border: none;
+          "
+          type="button"
+          onclick="closeForm()"
+        >
+          X
+        </button>
+      </div>
+      <div id="chatbox"></div>
+      <input
+        id="input"
+        style="position: relative; bottom: -350px"
+        type="text"
+      />
+      <button
+        onclick="send()"
+        style="position: relative; bottom: -350px; width: 50px !important"
+        type="button"
+      >
+        send
+      </button>
+    </div>
 
-  
-    <script src="./customer.js" ></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="./customer.js"></script>
   </body>
 </html>

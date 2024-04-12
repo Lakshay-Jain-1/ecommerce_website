@@ -21,11 +21,13 @@
        </form>
 
        <div id="add"> <h2>Add Your Products</h2></div>
-       <div id="update"> <h2>Update (One Click to Update) </h2></div>
+       <div id="update1"> <h2 id="update">Update (One Click to Update) </h2></div>
        <div id="delete"><h2>Delete (Double Click to Delete)</h2></div>
 
     </div>
-   <script>
+    <script>
+    
+
     document.getElementById("add").addEventListener("click",()=>{
         document.querySelector("form").style.display="flex"
         document.getElementById("add").style.display="none"
@@ -33,30 +35,60 @@
         document.getElementById("delete").style.display="none"
     })
 
-    // document.getElementById("tform").addEventListener("submit",async(event)=>{
-    //     event.preventDefault(); 
-    //     let new_form = new FormData();
-    //       let image = document.getElementById("file").files[0];
-    //       let name = document.getElementById("p_name").value;
-    //       let des = document.getElementById("des").value;
+     document.getElementById("update").addEventListener("click",(event)=>{
+        document.getElementById("add").style.display="none";
+        document.getElementById("delete").style.display="none";
 
-    //       new_form.append("image", image);
-    //       new_form.append("name", name);
-    //       new_form.append("des", des);
-    //       console.log(new_form)
-    //    const options={
-    //     method:"POST",
-    //     body:new_form
-    //    }
+        fetch("http://localhost:3000/product").then(res=>res.json()).then(res=>append(res))
 
-    //  await fetch("http://localhost:3000/test",options);
+     })
 
-       
-    //     document.getElementById("add").style.display="block"
-    //     document.getElementById("update").style.display="block"
-    //     document.getElementById("delete").style.display="block"
+     document.getElementById("delete").addEventListener("click",(event)=>{
+        document.getElementById("add").style.display="none";
+        document.getElementById("delete").style.display="none";
 
-    // })
+        fetch("http://localhost:3000/product").then(res=>res.json()).then(res=>deleted(res))
+
+     })
+
+     function deleted(data){
+        data.forEach(ele=>{
+            let element=   document.createElement("h3");
+            element.append(ele.name)
+            document.getElementById("update1").appendChild(element)
+            element.addEventListener("click",async()=>{
+                    const option ={
+                        method:"delete"
+                    }
+                    await fetch(`http://localhost:3000/delete?q=${ele._id}`,option)
+                    window.location.href="/"
+                })
+        })
+     }
+     
+     function append(data){
+            data.forEach(ele=>{
+                // logic click details form mein daalihogi and usne mehnat nhi krni padegi
+              let element=   document.createElement("h3") 
+                element.append(ele.name)
+                console.log(ele)
+                
+                 
+                element.addEventListener("click",async()=>{
+                     
+
+                    document.getElementById("p_name").value=ele.name
+                    document.getElementById("des").value=ele.details
+                  
+                    document.querySelector("form").style.display="flex"
+                    const option ={
+                        method:"delete"
+                    }
+                    await fetch(`http://localhost:3000/delete?q=${ele._id}`,option)
+                })
+                document.getElementById("update1").appendChild(element)
+            })
+        }
    </script>
 
     
