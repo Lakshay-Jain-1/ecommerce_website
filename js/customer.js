@@ -7,8 +7,16 @@ function send() {
   ele.innerText = document.getElementById("input").value;
   
   document.getElementById("chatbox").appendChild(ele);
-  socket.emit("message",{msg:`${document.getElementById("input").value}`})
-  
+  socket.emit("message",{id:`${socket.id}`,msg:`${document.getElementById("input").value}`})
+
+
+  socket.on("adminmessage",(text)=>{
+    console.log(1)
+    console.log(text)
+    let reply = document.createElement("h6");
+    reply.innerText = text
+    document.getElementById("chatbox").appendChild(reply);
+  })  
 
 }
 
@@ -126,3 +134,10 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+
+
+// for logout
+
+document.getElementById("logout").addEventListener("click",async()=>{
+        await fetch("http://localhost:3000/logout").then(res=>{location.reload()})
+})

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+      }
+
+      img {
+        width: 273px;
+        height: 183px;
+      }
+
+      h5 {
+        margin: 10px;
+      }
+
+      .open-button {
+        background-color: #555;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+      }
+
+      /* The popup chat - hidden by default */
+      .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message"><h2>Messages Click and then reply in chatbox</h2></div>
+    <div id="user" style="display: flex; flex-direction: column">
+      <h2>USERS</h2>
+    </div>
+    <div id="vendor" style="display: flex; flex-direction: column">
+      <h2>VENDORS</h2>
+    </div>
+    <button class="open-button" style="text-align: center" onclick="openForm()">
+      Chat
+    </button>
+
+    <div
+      id="myForm"
+      style="
+        display: none;
+        height: 400px;
+        width: 280px;
+        background-color: aliceblue;
+        position: relative;
+        left: 78.5vw;
+        top: -90px;
+      "
+    >
+      <div style="display: flex; position: relative; top: -20px; height: 10px">
+        <h3>Chat</h3>
+        <button
+          style="
+            position: relative;
+            left: 210px;
+            background-color: white;
+            border: none;
+          "
+          type="button"
+          onclick="closeForm()"
+        >
+          X
+        </button>
+        <div
+          id="chatbox"
+          style="
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            left: -70px;
+            bottom: -45px;
+          "
+        ></div>
+      </div>
+
+      <input
+        id="input"
+        style="position: relative; bottom: -370px"
+        type="text"
+      />
+      <button
+        onclick="send()"
+        style="position: relative; bottom: -370px; width: 50px !important"
+        type="button"
+      >
+        send
+      </button>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // getting user data
+      fetch("http://localhost:3000/user/data")
+        .then((res) => res.json())
+        .then((res) => users(res));
+      function users(data) {
+        data.forEach((element) => {
+          let ele = document.createTextNode(JSON.stringify(element));
+          document.getElementById("user").appendChild(ele);
+        });
+      }
+      // getting vendor data
+
+      fetch("http://localhost:3000/vendor/data")
+        .then((res) => res.json())
+        .then((res) => vendor(res));
+
+      function vendor(data) {
+        data.forEach((element) => {
+          let ele = document.createTextNode(JSON.stringify(element));
+          document.getElementById("vendor").appendChild(ele);
+        });
+      }
+      // for closing and opening form
+      // for opening form
+      function openForm() {
+        document.getElementById("myForm").style.display = "block";
+      }
+
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+      }
+
+      // for sending and recieving data
+
+      const socket = io();
+      // for receiveing
+      socket.on("message", (message) => {
+        const { id, msg } = message;
+        let element = document.createElement("h5");
+
+        element.innerText = JSON.stringify({ id: id, message: msg });
+        document.getElementById("message").appendChild(element);
+      });
+
+      //for sending
+      let id_details;
+      document.getElementById("message").addEventListener("click", (event) => {
+        id_details = JSON.parse(event.target.innerText).id;
+      });
+
+      // appending chat data
+
+      function send() {
+        const ele = document.createElement("p");
+        ele.innerText = document.getElementById("input").value;
+
+        document.getElementById("chatbox").appendChild(ele);
+        let adminmessage = {
+          id :`${id_details}`,
+          message: `${document.getElementById("input").value}`,
+        };
+        socket.emit("admin", adminmessage);
+      }
+     
+    </script>
+  </body>
+</html>

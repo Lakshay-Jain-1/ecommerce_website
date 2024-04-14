@@ -7,6 +7,27 @@ const productSchema = new mongoose.Schema({
     image:String,
     details:String
 })
-    let user = mongoose.model("products",productSchema)
-    module.exports = user;
+const customer= new mongoose.Schema({
+    name:String,
+    password:String 
+}) 
+
+const vendor= new mongoose.Schema({
+    name:String,
+    password:String 
+}) 
+
+const admin= new mongoose.Schema({
+    name:String,
+    password:String
+}) 
+
+
+    let product = mongoose.model("products",productSchema)
+    let user = mongoose.model("user",customer)
+    let seller = mongoose.model("vendor",vendor)
+    let superadmin = mongoose.model("admin",admin)
+
+
+    module.exports = {product,user,seller,superadmin};
 

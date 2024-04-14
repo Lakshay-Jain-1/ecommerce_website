@@ -31,6 +31,7 @@
          
         <h2 style="position: relative; bottom: -420px; left:400px">Total</h2>
         <h4 id="total" style="position: relative; bottom: -395px; left:550px" > </h4>
+        <button  id="pay" style="position: relative; bottom: -420px; left:500px;border: none; background-color: whitesmoke; width: 90px; height: 40px;" type="button">Pay Now</button>
     </div>
     <script>
           
@@ -39,6 +40,13 @@
                 localStorage.clear()
                 location.reload()
            })
+            document.getElementById("pay").addEventListener("click",()=>{
+                location.href= `http://localhost:3000/payment?amount=${Number(document.getElementById("total").innerText)}`
+           })
+            
+           
+        
+           
          
             let sum=0;
             for(let i = 0 ; i<localStorage.length;i++){
